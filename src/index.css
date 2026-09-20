@@ -1,0 +1,223 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&family=IM+Fell+English:ital@0;1&display=swap');
+
+@layer base {
+  :root {
+    /* Parchment light mode */
+    --background: 38 35% 97%;
+    --foreground: 220 40% 12%;
+
+    --card: 38 40% 95%;
+    --card-foreground: 220 40% 12%;
+
+    --popover: 38 40% 95%;
+    --popover-foreground: 220 40% 12%;
+
+    --primary: 42 85% 42%;
+    --primary-foreground: 38 35% 97%;
+
+    --secondary: 220 25% 20%;
+    --secondary-foreground: 38 35% 97%;
+
+    --muted: 38 20% 90%;
+    --muted-foreground: 220 15% 40%;
+
+    --accent: 12 60% 35%;
+    --accent-foreground: 38 35% 97%;
+
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 38 35% 97%;
+
+    --border: 38 30% 82%;
+    --input: 38 30% 82%;
+    --ring: 42 85% 42%;
+
+    --radius: 0.5rem;
+
+    /* Custom poetry tokens */
+    --gold: 42 85% 42%;
+    --gold-light: 45 95% 68%;
+    --gold-dark: 38 75% 28%;
+    --parchment: 38 55% 92%;
+    --ink: 220 40% 12%;
+    --burgundy: 340 55% 30%;
+    --midnight: 220 40% 12%;
+
+    --sidebar-background: 38 35% 97%;
+    --sidebar-foreground: 220 40% 12%;
+    --sidebar-primary: 42 85% 42%;
+    --sidebar-primary-foreground: 38 35% 97%;
+    --sidebar-accent: 38 20% 90%;
+    --sidebar-accent-foreground: 220 40% 12%;
+    --sidebar-border: 38 30% 82%;
+    --sidebar-ring: 42 85% 42%;
+  }
+
+  .dark {
+    --background: 220 45% 8%;
+    --foreground: 38 40% 90%;
+
+    --card: 220 40% 11%;
+    --card-foreground: 38 40% 90%;
+
+    --popover: 220 40% 11%;
+    --popover-foreground: 38 40% 90%;
+
+    --primary: 45 90% 58%;
+    --primary-foreground: 220 45% 8%;
+
+    --secondary: 220 30% 18%;
+    --secondary-foreground: 38 40% 90%;
+
+    --muted: 220 30% 15%;
+    --muted-foreground: 38 20% 60%;
+
+    --accent: 12 55% 50%;
+    --accent-foreground: 38 40% 90%;
+
+    --destructive: 0 65% 50%;
+    --destructive-foreground: 38 40% 90%;
+
+    --border: 220 30% 22%;
+    --input: 220 30% 22%;
+    --ring: 45 90% 58%;
+
+    --gold: 45 90% 58%;
+    --gold-light: 48 95% 72%;
+    --gold-dark: 40 80% 42%;
+    --parchment: 38 30% 15%;
+    --ink: 38 40% 90%;
+    --burgundy: 340 50% 45%;
+    --midnight: 220 45% 8%;
+
+    --sidebar-background: 220 45% 8%;
+    --sidebar-foreground: 38 40% 90%;
+    --sidebar-primary: 45 90% 58%;
+    --sidebar-primary-foreground: 220 45% 8%;
+    --sidebar-accent: 220 30% 15%;
+    --sidebar-accent-foreground: 38 40% 90%;
+    --sidebar-border: 220 30% 22%;
+    --sidebar-ring: 45 90% 58%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Crimson Text', Georgia, serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--gold));
+  border-radius: 3px;
+}
+
+/* Gold shimmer animation */
+@keyframes goldShimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(-1deg); }
+  50% { transform: translateY(-8px) rotate(1deg); }
+}
+
+@keyframes unfurl {
+  from { opacity: 0; transform: scaleY(0.3) translateY(-20px); }
+  to { opacity: 1; transform: scaleY(1) translateY(0); }
+}
+
+@keyframes paperFold {
+  from { opacity: 0; transform: perspective(600px) rotateX(-20deg) scale(0.9); }
+  to { opacity: 1; transform: perspective(600px) rotateX(0deg) scale(1); }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-unfurl {
+  animation: unfurl 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.animate-paper-fold {
+  animation: paperFold 0.4s ease-out forwards;
+}
+
+/* Gold gradient text */
+.gold-text {
+  background: linear-gradient(135deg, hsl(var(--gold-dark)), hsl(var(--gold)), hsl(var(--gold-light)), hsl(var(--gold)));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: goldShimmer 4s linear infinite;
+}
+
+/* Ornamental divider */
+.ornament::before,
+.ornament::after {
+  content: '⸻';
+  color: hsl(var(--gold));
+  opacity: 0.5;
+  margin: 0 0.5rem;
+}
+
+/* Poetry text styling */
+.poem-text {
+  font-family: 'IM Fell English', 'Crimson Text', Georgia, serif;
+  font-style: italic;
+  line-height: 2;
+  letter-spacing: 0.02em;
+}
+
+/* Backdrop blur for modals */
+.modal-backdrop {
+  backdrop-filter: blur(8px);
+}
+
+/* Safe area for mobile notch / home bar */
+.safe-area-top {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Hide scrollbar for tabs */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
